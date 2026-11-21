@@ -1,0 +1,15 @@
+const express = require('express');
+const app = express();
+const auth = require('./routes/authRoutes');
+const productos = require('./routes/productosRoutes');
+const favoritos = require('./routes/favoritosRoutes');
+const { noEncontrada, manejador } = require('./utils/errores');
+app.disable('x-powered-by');
+app.use(express.json({ limit: '20kb' }));
+app.get('/', (req, res) => res.json({ proyecto: 'Catalogo de productos con favoritos', api: '/api', estado: 'operativa' }));
+app.use('/api/auth', auth);
+app.use('/api/productos', productos);
+app.use('/api/favoritos', favoritos);
+app.use(noEncontrada);
+app.use(manejador);
+module.exports = app;

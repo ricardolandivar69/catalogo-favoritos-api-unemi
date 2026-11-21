@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const c = require('../controllers/productosController');
+const { asyncRuta } = require('../utils/errores');
+const { autenticar, soloAdministrador } = require('../middleware/autenticar');
+router.get('/', asyncRuta(c.listar));
+router.get('/:id', asyncRuta(c.obtener));
+router.post('/', autenticar, soloAdministrador, asyncRuta(c.crear));
+router.put('/:id', autenticar, soloAdministrador, asyncRuta(c.actualizar));
+router.delete('/:id', autenticar, soloAdministrador, asyncRuta(c.eliminar));
+module.exports = router;

@@ -1,0 +1,26 @@
+{
+  "name": "catalogo-favoritos-api",
+  "version": "1.1.0",
+  "private": true,
+  "description": "UNEMI Desarrollo Web Tarea 2: API REST de catalogo, roles JWT y favoritos privados (Ricardo Landivar y Mariana Reyes)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:admin": "node scripts/crear-admin.js",
+    "db:seed": "node scripts/cargar-productos.js",
+    "test": "node --test",
+    "test:token-expirado": "node scripts/generar-token-expirado.js",
+    "test:postman": "node --test tests/postman.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+  }
+}
